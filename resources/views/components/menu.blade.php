@@ -9,9 +9,38 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
+            @auth
             <ul class="navbar-nav mr-auto">
 
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdownAlbum" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Albums
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownAlbum">
+                        <a class="dropdown-item" href="{{ route('albums.index') }}">
+                            List
+                        </a>
+                        <a class="dropdown-item" href="{{ route('albums.create') }}">
+                            New Album
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdownArtist" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Artists
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownArtist">
+                        <a class="dropdown-item" href="{{ route('artists.index') }}">
+                            List
+                        </a>
+                    </div>
+                </li>
             </ul>
+            @endauth
+
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

@@ -37,6 +37,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+
+    # Relationships
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -65,9 +73,11 @@ class User extends Authenticatable
         return $this->where('username', $username)->first();
     }
 
-    public function role()
+
+
+    public function isAdmin(): bool
     {
-        return $this->belongsTo(Role::class);
+        return $this?->role?->role === 'admin';
     }
 
     public function form()

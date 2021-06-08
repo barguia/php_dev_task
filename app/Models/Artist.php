@@ -19,6 +19,17 @@ class Artist
         ]);
     }
 
+    public function getNameList(): array
+    {
+        return array_unique(
+            array_map(function($artist) {
+                if(isset($artist) && isset($artist['name'])) {
+                    return $artist['name'];
+                }
+            }, $this->getList())
+        );
+    }
+
     public function getList(): array
     {
         $response = $this->client->request('GET');

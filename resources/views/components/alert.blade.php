@@ -1,3 +1,3 @@
-@if(isset($mensage) &&  $mensage)
-<p class="alert alert-{{ $style ?? 'info' }}">{{ $mensage ?? '' }}</p>
+@if(isset($message) &&  $message)
+<p class="alert alert-{{ $style ?? 'info' }}">{{ $message ?? '' }}</p>
 @endif

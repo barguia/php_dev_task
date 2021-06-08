@@ -42,7 +42,16 @@ class AlbumController extends Controller
      */
     public function store(AlbumRequest $request, Album $album)
     {
-        return $album->newAlbum();
+        $newAlbum = $album->newAlbum($request->all());
+        if($newAlbum && $newAlbum->id) {
+            session()->flash('message','Album created successfully.');
+            session()->flash('style','success');
+            return redirect()->route('albums.index');
+        }
+
+        session()->flash('message','Something wrong happened.');
+        session()->flash('style','danger');
+        return redirect()->back()->withInput();
     }
 
     /**
@@ -57,17 +66,6 @@ class AlbumController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Album $album)
-    {
-        return $album->show('');
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -76,7 +74,8 @@ class AlbumController extends Controller
      */
     public function update(AlbumRequest $request, Album $album)
     {
-        return $album->updateAlbum($request);
+        $album->updateAlbum($request);
+        return redirect()->route('albums.index');
     }
 
     /**
@@ -87,6 +86,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        $album->destroy();
+        $album->destroyAlbum();
+        return redirect()->route('albums.index');
     }
 }

@@ -12,7 +12,7 @@ class Alert extends Component
     public function __construct($style = "", $message = "")
     {
         $this->style = $style ?? '';
-        $this->mensagem = $message ?? '';
+        $this->message = $message ?? '';
     }
 
     /**

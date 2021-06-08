@@ -24,10 +24,11 @@
         @include('components.menu')
 
         <main class="py-4">
-            <x-alert :style="session('style')" :mensage="session('mensage')"/>
+            <div class="container">
+                <x-alert :style="session('style')" :message="session('message')"/>
 
-
-            @yield('content')
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
