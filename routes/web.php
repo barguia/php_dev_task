@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('albuns', App\Http\Controllers\AlbumController::class);
+Route::get('/users/create',[App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Route::get('/artists',[App\Http\Controllers\ArtistController::class, 'index'])->name('users.index');
+Route::post('/users',[App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
